@@ -95,6 +95,8 @@ class MySQL extends Schema
 		// Text/blob cannot contain defaults
 		if($type === 'TEXT')
 		{
+			if( ! $data['null']) $sql .= ' NOT NULL';
+			
 			return $sql;
 		}
 
