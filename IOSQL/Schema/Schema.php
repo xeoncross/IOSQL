@@ -15,7 +15,7 @@ Abstract class Schema
 	public $pdo = NULL;
 	public $driver = NULL;
 
-	public function __construct(\PDO $pdo, , $i = '`')
+	public function __construct(\PDO $pdo, $i = '`')
 	{
 		$this->i = $i;
 		$this->pdo = $pdo;
