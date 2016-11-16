@@ -13,7 +13,7 @@ class MySQL extends Schema
 {
 	public $sql = array(
 
-		'create_table' => "CREATE TABLE `%s` (\n%s,\nPRIMARY KEY (`%s`)\n) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;",
+		'create_table' => "CREATE TABLE `%s` (\n%s,\nPRIMARY KEY (`%s`)\n) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;",
 		'drop_table' => 'DROP TABLE IF EXISTS `%s` %s;',
 		'rename_table' => 'ALTER TABLE `%s` RENAME TO `%s`;',
 
@@ -67,9 +67,10 @@ class MySQL extends Schema
 			// Default to text
 			$length = $data['length'] ? $data['length'] : 65535;
 
-			if($length <= 255)
+			// MySQL 5.0.3+ now supports longer varchar
+			if($length < 65535)
 				$type = 'VARCHAR('. $length.')';
-			elseif($length <= 65535)
+			elseif($length == 65535)
 				$type = 'TEXT';
 			elseif($length <= 16777215)
 				$type = 'MEDIUMTEXT';
