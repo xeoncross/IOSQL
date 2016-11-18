@@ -13,7 +13,7 @@ class MySQL extends Schema
 {
 	public $sql = array(
 
-		'create_table' => "CREATE TABLE `%s` (\n%s,\nPRIMARY KEY (`%s`)\n) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;",
+		'create_table' => "CREATE TABLE `%s` (\n%s,\nPRIMARY KEY (`%s`)\n) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;",
 		'drop_table' => 'DROP TABLE IF EXISTS `%s` %s;',
 		'rename_table' => 'ALTER TABLE `%s` RENAME TO `%s`;',
 
